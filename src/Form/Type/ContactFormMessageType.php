@@ -92,7 +92,7 @@ class ContactFormMessageType extends AbstractType
                         new NotBlank(['message' => 'Zadejte telefonní číslo.']),
                         new Regex([
                             'pattern' => '/^\+?[0-9 ]{6,20}$/',
-                            'message' => 'Zadejte platné telefonní číslo (6–15 číslic, může začínat +).',
+                            'message' => 'Zadejte platné telefonní číslo (6–20 číslic a mezer, může začínat +).',
                         ]),
                     ],
                     'required' => true,
@@ -105,7 +105,7 @@ class ContactFormMessageType extends AbstractType
                         new NotBlank(['message' => 'Zadejte telefonní číslo.']),
                         new Regex([
                             'pattern' => '/^\+?[0-9 ]{6,20}$/',
-                            'message' => 'Zadejte platné telefonní číslo (6–15 číslic, může začínat +).',
+                            'message' => 'Zadejte platné telefonní číslo (6–20 číslic a mezer, může začínat +).',
                         ]),
                     ],
                     'required' => false,
