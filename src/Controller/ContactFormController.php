@@ -65,6 +65,13 @@ class ContactFormController
             }
 
             if ($form->isValid()) {
+
+                // Remove spaces from phone number
+                if ($contactFormMessage->getPhone() !== NULL) {
+                    $cleanedPhone = str_replace(' ', '', $contactFormMessage->getPhone());
+                    $contactFormMessage->setPhone($cleanedPhone);
+                }
+
                 $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? null;
                 $contactFormMessage->setIp(is_string($ip) ? $ip : null);
 
