@@ -1,9 +1,15 @@
-{% set phone = data|replace({' ': ''}) %}
+{% set raw = data|replace({' ': ''}) %}
+{% set phone = raw %}
 
 {% if phone starts with '+420' and phone|length == 13 %}
+    {# Český formát s předvolbou #}
     {{ phone|slice(0, 4) ~ ' ' ~ phone|slice(4, 3) ~ ' ' ~ phone|slice(7, 3) ~ ' ' ~ phone|slice(10) }}
-{% elseif phone|length == 9 %}
-    {{ phone|slice(0, 3) ~ ' ' ~ phone|slice(3, 3) ~ ' ' ~ phone|slice(6) }}
+
+{% elseif phone matches('/^\d{9}$/') %}
+    {# Český formát bez předvolby – doplníme +420 #}
+    {{ '+420 ' ~ phone|slice(0, 3) ~ ' ' ~ phone|slice(3, 3) ~ ' ' ~ phone|slice(6) }}
+
 {% else %}
-    {{ phone }}
+    {# Jiný formát – fallback s mezerami po 3 číslicích #}
+    {{ phone|chunk(3)|join(' ') }}
 {% endif %}
