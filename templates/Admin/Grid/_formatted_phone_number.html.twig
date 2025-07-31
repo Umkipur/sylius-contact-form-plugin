@@ -1,9 +1,4 @@
-{{ row.formattedPhoneNumber }}
-
-{#
 {% set phone = data.phone|replace({' ': ''}) %}
 {# rozděl telefonní číslo na 3 části a spoj s mezerou #}
 
-{#
 {{ phone|slice(0, 3) ~ ' ' ~ phone|slice(3, 3) ~ ' ' ~ phone|slice(6) }}
-#}
