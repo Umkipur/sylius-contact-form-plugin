@@ -11,5 +11,9 @@
 
 {% else %}
     {# Jiný formát – fallback s mezerami po 3 číslicích #}
-    {{ phone|slice(0, 3) ~ ' ' ~ phone|slice(3, 3) ~ ' ' ~ phone|slice(6) }}
+    {% set chunks = [] %}
+    {% for i in 0..(phone|length / 3 - 1)|round(0, 'floor') %}
+        {% set chunks = chunks|merge([phone|slice(i * 3, 3)]) %}
+    {% endfor %}
+    {{ chunks|join(' ') }}
 {% endif %}
