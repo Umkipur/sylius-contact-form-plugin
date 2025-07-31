@@ -11,5 +11,5 @@
 
 {% else %}
     {# Jiný formát – fallback s mezerami po 3 číslicích #}
-    {{ phone|chunk(3)|join(' ') }}
+    {{ phone|slice(0, 3) ~ ' ' ~ phone|slice(3, 3) ~ ' ' ~ phone|slice(6) }}
 {% endif %}
