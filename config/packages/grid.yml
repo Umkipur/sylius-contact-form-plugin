@@ -24,6 +24,8 @@ sylius_grid:
         phone:
           type: string
           label: threebrs_sylius_contact_form_plugin.label.phone
+          options:
+            template: '@ThreeBRS/SyliusContactFormPlugin/Admin/Grid/_formatted_phone_number.html.twig'
         message:
           type: twig
           label: threebrs_sylius_contact_form_plugin.label.message
