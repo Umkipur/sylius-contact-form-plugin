@@ -1,4 +1,9 @@
-{% set phone = data.phone|replace({' ': ''}) %}
-{# rozděl telefonní číslo na 3 části a spoj s mezerou #}
+{% set phone = data|replace({' ': ''}) %}
 
-{{ phone|slice(0, 3) ~ ' ' ~ phone|slice(3, 3) ~ ' ' ~ phone|slice(6) }}
+{% if phone starts with '+420' and phone|length == 13 %}
+    {{ phone|slice(0, 4) ~ ' ' ~ phone|slice(4, 3) ~ ' ' ~ phone|slice(7, 3) ~ ' ' ~ phone|slice(10) }}
+{% elseif phone|length == 9 %}
+    {{ phone|slice(0, 3) ~ ' ' ~ phone|slice(3, 3) ~ ' ' ~ phone|slice(6) }}
+{% else %}
+    {{ phone }}
+{% endif %}

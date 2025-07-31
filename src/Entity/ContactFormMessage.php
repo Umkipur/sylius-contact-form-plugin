@@ -85,12 +85,6 @@ class ContactFormMessage implements ResourceInterface, ContactFormMessageInterfa
         return $this->phone;
     }
 
-    // Phone number with spaces
-    public function getFormattedPhoneNumber(): string
-    {
-        return preg_replace('/(\d{3})(\d{3})(\d{3,})/', '$1 $2 $3', $this->phoneNumber ?? '');
-    }
-
     public function setPhone(?string $phone): void
     {
         $this->phone = $phone;
